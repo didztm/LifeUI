@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 public class PopulationWindowsEditor : EditorWindow
 {
@@ -11,7 +12,8 @@ public class PopulationWindowsEditor : EditorWindow
     #region Public Members
 
     #endregion
-    PopulationManager _PopMan;
+    public PopulationManager _PopMan;
+
     #region Public void
     
     #endregion
@@ -30,12 +32,22 @@ public class PopulationWindowsEditor : EditorWindow
         _PopMan= EditorGUILayout.ObjectField("PopulationManager :",_PopMan,typeof(PopulationManager),true)as PopulationManager;
 
         //EditorGUILayout.ObjectField();
+        //_PopMan = new List<Population>(FindObjectsOfType<PopulationManager>());
+        //_PopMan._onValidate.AddListener(UpdateList);
         foreach (Population p in _PopMan.m_list_population)
         {
+            //editorobject
             EditorGUILayout.ObjectField(p._name, p, typeof(Population), true);
+      
         }
         
     }
+    private void UpdateList() {
+        _PopMan = FindObjectOfType<PopulationManager>();
+
+    }
+
+  
     #endregion
 
     #region Tools Debug and Utility

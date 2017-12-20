@@ -38,7 +38,8 @@ public class PopulationsEditor : Editor
         }
         GUILayout.Label(_populationsName);
        // Debug.Log(_populationsName);
-        //DrawDefaultInspector();
+        DrawDefaultInspector();
+
     }
 
 
